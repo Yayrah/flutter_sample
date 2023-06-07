@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/screens/Dashboard/dashboard_screen.dart';
+import 'package:pet_life_gh/screens/Forgot%20Password/forgot_passwor_screen.dart';
 import 'package:pet_life_gh/screens/Sign%20Up/sign_up_screen.dart';
 
 import '../../../constants.dart';
@@ -144,12 +146,20 @@ class _BodyState extends State<Body> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        color: green,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgotPasswordScreen()));
+                      },
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                          color: green,
+                        ),
                       ),
                     ),
                   ],
@@ -157,20 +167,30 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: 30,
                 ),
-                Container(
-                  height: 50,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    color: green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: borderColor),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DashboardScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      color: green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: borderColor),
+                      ),
                     ),
                   ),
                 ),
@@ -292,8 +312,8 @@ class _BodyState extends State<Body> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => SignUpScreen(),
-                    ),
-                              );
+                          ),
+                        );
                       },
                       child: Text(
                         "Sign Up",

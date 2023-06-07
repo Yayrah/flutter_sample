@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/constants.dart';
 import 'package:pet_life_gh/screens/Home/home_screen.dart';
 
 void main() {
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-     debugShowCheckedModeBanner: false,
-      home:  HomeScreen(),
-    );
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),   
+    ); 
   }
 }
-

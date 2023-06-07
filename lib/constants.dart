@@ -6,4 +6,13 @@ const green = Color(0xFFC0E862);
 const white = Color(0xFFffffff);
 const grey = Color(0xFFd9d9d9);
 const black = Color(0xFF000000);
+Color lightBlue = Color(0xffB8D4FE);
+Color deepBlue = Color(0xff1440B1);
 
+List tabNames = [
+  'Pet Products',
+  'Pet Clothing',
+  'Pet Food',
+  'Pet Accessories',
+  'Pet Watch',
+];
