@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/screens/Dashboard/Components/petclothingitem.dart';
 
@@ -6,8 +8,20 @@ import 'dashboard_carousel.dart';
 import 'dashboard_tab.dart';
 import 'pet_food_item.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  int selectedTabIndex = 0;
+  void OnTabSelected(int index) {
+    setState(() {
+      selectedTabIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +42,12 @@ class Body extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return DashboardTabs(title: tabNames[index]);
+                  return DashboardTabs(
+                    index: index,
+                    onTabSelected: OnTabSelected,
+                    selectedTabIndex: selectedTabIndex,
+                    title: tabNames[index],
+                  );
                 },
                 separatorBuilder: (context, index) {
                   return SizedBox(width: 22);
@@ -132,12 +151,15 @@ class Body extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 30),
-            child: SizedBox(height: 190,
+            child: SizedBox(
+              height: 190,
               child: ListView.builder(
-                scrollDirection: Axis.horizontal,shrinkWrap:true ,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return PetClothingItem();
-                },itemCount: 5,
+                },
+                itemCount: 5,
               ),
             ),
           ),

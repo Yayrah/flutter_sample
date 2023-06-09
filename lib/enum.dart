@@ -1,0 +1,1 @@
+enum BottomNavState{home, favourite, cart, vet,settings}

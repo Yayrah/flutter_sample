@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class PetFoodItem extends StatefulWidget {
-  const PetFoodItem({
+    bool isItemFavourite ;
+
+   PetFoodItem({
     Key? key,
+    this.isItemFavourite = false,
   }) : super(key: key);
 
   @override
@@ -12,7 +15,6 @@ class PetFoodItem extends StatefulWidget {
 }
 
 class _PetFoodItemState extends State<PetFoodItem> {
-  bool isItemFavourite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +66,14 @@ class _PetFoodItemState extends State<PetFoodItem> {
                 GestureDetector(
                     onTap: () {
                       setState(() {
-                        isItemFavourite = !isItemFavourite;
+                        widget.isItemFavourite = !widget.isItemFavourite;
                       });
                     },
                     child: Icon(
-                      isItemFavourite
+                      widget.isItemFavourite
                           ? Icons.favorite
                           : Icons.favorite_outline_rounded,
-                      color: isItemFavourite ? green : grey,
+                      color: widget.isItemFavourite ? green : grey,
                       size: 26,
                     ))
               ],

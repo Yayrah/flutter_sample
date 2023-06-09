@@ -1,27 +1,29 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class DashboardTabs extends StatefulWidget {
+class DashboardTabs extends StatelessWidget {
+  final int index;
+  final int selectedTabIndex;
   final String title;
+  final Function onTabSelected;
   const DashboardTabs({
     Key? key,
     required this.title,
+    required this.selectedTabIndex,
+    required this.index, required this.onTabSelected,
   }) : super(key: key);
 
   @override
-  State<DashboardTabs> createState() => _DashboardTabsState();
-}
-
-class _DashboardTabsState extends State<DashboardTabs> {
-  bool isTabSelected = false;
-  @override
   Widget build(BuildContext context) {
+    final isTabSelected = index == selectedTabIndex;
     return GestureDetector(
       onTap: () {
-        setState(() {
-          isTabSelected = !isTabSelected;
-        });
+        if (!isTabSelected) {
+          onTabSelected(index);
+        }
       },
       child: Container(
         height: 47,
@@ -35,8 +37,7 @@ class _DashboardTabsState extends State<DashboardTabs> {
           border: Border.all(color: grey, width: 1),
         ),
         child: Center(
-          child: Text(
-            widget.title,
+          child: Text(title,
               style: isTabSelected
                   ? TextStyle(
                       color: black,
@@ -53,4 +54,3 @@ class _DashboardTabsState extends State<DashboardTabs> {
     );
   }
 }
-

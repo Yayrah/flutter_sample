@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/Components/bottom_nav_bar.dart';
 import 'package:pet_life_gh/constants.dart';
+import 'package:pet_life_gh/enum.dart';
 import 'package:pet_life_gh/screens/My%20Cart/component/body.dart';
 
 class CartPage extends StatefulWidget {
@@ -36,19 +38,10 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         backgroundColor: white,
-        actions: [
-          Icon(
-            Icons.shopping_cart_rounded,
-            color: blue,
-          ),
-          SizedBox(
-            width: 15,
-          ),
-        ],
       ),
       body: Body(),
       backgroundColor: white,
+      bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.cart),
     );
   }
 }
-

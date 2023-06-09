@@ -1,15 +1,13 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/Components/bottom_nav_bar.dart';
 import 'package:pet_life_gh/enum.dart';
-import 'package:pet_life_gh/screens/Dashboard/Components/body.dart';
+import 'package:pet_life_gh/screens/Favourites/Components/body.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
 
 import '../../constants.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+class FavouritesScreen extends StatelessWidget {
+  const FavouritesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +47,7 @@ class DashboardScreen extends StatelessWidget {
       drawer: Drawer(),
       body: Body(),
       backgroundColor: white,
-      bottomNavigationBar: BottomNavBar(
-        selectedIcon: BottomNavState.home,
-      ),
+      bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.favourite),
     );
   }
 }
