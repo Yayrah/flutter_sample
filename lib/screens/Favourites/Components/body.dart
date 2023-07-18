@@ -32,7 +32,8 @@ class Body extends StatelessWidget {
             SizedBox(height: 10),
             GridView.builder(
               physics: BouncingScrollPhysics(),
-              itemCount: 3,
+              itemCount: 5
+              ,
               shrinkWrap: true,
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),

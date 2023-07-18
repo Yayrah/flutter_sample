@@ -75,7 +75,7 @@ class BottomNavBar extends StatelessWidget {
                   size: 20,
                 ),
                 Text(
-                  "Favorite",
+                  "Favorites",
                   style: TextStyle(
                     color:
                         BottomNavState.favourite == selectedIcon ? green : grey,

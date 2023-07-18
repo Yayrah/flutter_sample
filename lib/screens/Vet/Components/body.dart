@@ -30,58 +30,58 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: 15),
             Center(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 50,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: grey, width: 1),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  // alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: grey,
-                      ),
-                      SizedBox(width: 20),
-                      Text(
-                        "Search Veterinarian's name...",
-                        style: TextStyle(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 300,
+                    child: TextField(
+                      autocorrect: false,
+                      autofocus: false,
+                      
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
                           color: grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300,
                         ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: grey, width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: blue, width: 1),
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 16.5),
+                        hintText: "Search Veterinarian's name...",
+                        hintStyle: TextStyle(
+                            color: grey,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 16),
                       ),
-                    ],
-                  ),
-                ),
-                Spacer(),
-                Container(
-                  height: 50,
-                  width: 57,
-                  decoration: BoxDecoration(
-                    color: white,
-                    border: Border.all(color: grey, width: 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.mic,
-                      color: grey,
                     ),
                   ),
-                )
-              ],
-            )),
+                  Spacer(),
+                  Container(
+                    height: 50,
+                    width: 57,
+                    decoration: BoxDecoration(
+                      color: white,
+                      border: Border.all(color: grey, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.mic,
+                        color: grey,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 35),
             ListView.separated(
                 physics: NeverScrollableScrollPhysics(),
@@ -92,10 +92,11 @@ class Body extends StatelessWidget {
                 separatorBuilder: (context, index) {
                   return SizedBox(height: 25);
                 },
-                itemCount: 6)
+                itemCount: 6),
           ],
         ),
       ),
     );
+    ;
   }
 }

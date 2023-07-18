@@ -20,17 +20,13 @@ class Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CartItem(),
-            ListView.separated(
+            ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return CartItem();
                 },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: 0,
-                  );
-                },
+                
                 itemCount: 2),
             SizedBox(
               height: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/screens/Home2/Component/new_arrival_item.dart';
 
 const borderColor = Color(0xFF504A4A);
 const blue = Color(0xFF0A1D3A);
@@ -15,4 +16,62 @@ List tabNames = [
   'Pet Food',
   'Pet Accessories',
   'Pet Watch',
+];
+
+List featuredProdNames = [
+  'Boxer',
+  'Bulldog',
+  'Bullmastiff',
+  'Cane Corso',
+  'Chihuahua',
+];
+
+List featuredProdPics = [
+  'asset/images/boxer.jpeg',
+  'asset/images/bulldog.jpeg',
+  'asset/images/bullmastiff.jpeg',
+  'asset/images/cane.jpeg',
+  'asset/images/chihuahua.jpeg',
+];
+
+List newArrivalNames = [
+  'Bulldog',
+  'Pug',
+  'Akita',
+  'Dobberman',
+];
+
+List newArrivalPics = [
+  'asset/images/boston.jpeg',
+  'asset/images/bullmastiff.jpeg',
+  'asset/images/cane.jpeg',
+  'asset/images/chihuahua.jpeg',
+];
+
+List NewArrivalPrice = [
+  'GHS 2000',
+  'GHS 3000',
+  'GHS 2500',
+  'GHS 3450',
+];
+
+List NewArrivalGender = [
+  'Female',
+  'Male',
+  'Female',
+  'Male',
+];
+
+List categoryNames = [
+  'Dogs',
+  'Cats',
+  'Pet Products',
+  'Find Vet',
+];
+
+List categoryPics = [
+  'asset/images/boston.jpeg',
+  'asset/images/bullmastiff.jpeg',
+  'asset/images/cane.jpeg',
+  'asset/images/chihuahua.jpeg',
 ];

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/Components/bottom_nav_bar.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
