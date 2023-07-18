@@ -82,7 +82,7 @@ class Body extends StatelessWidget {
               ),
               CircleAvatar(
                 radius: 70,
-                backgroundImage:AssetImage('asset/images/boxer.jpeg'),
+                backgroundImage: AssetImage('asset/images/boxer.jpeg'),
               )
             ],
           ),
@@ -95,7 +95,6 @@ class Body extends StatelessWidget {
             decoration: BoxDecoration(
               color: grey,
               image: DecorationImage(
-                
                 image: AssetImage('asset/images/home.jpeg'),
                 fit: BoxFit.cover,
               ),
@@ -110,12 +109,14 @@ class Body extends StatelessWidget {
                 children: [
                   Text(
                     "We always strive to \n provide our  with the most\n knowledgeable",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500,color: grey),
+                    style: TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.w500, color: grey),
                     textAlign: TextAlign.center,
                   ),
                   Text(
                     "and UP TO DATE CARE\n POSSIBLE ",
-                    style: TextStyle(fontWeight: FontWeight.w500,color: Colors.orange),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500, color: Colors.orange),
                     textAlign: TextAlign.center,
                   ),
                 ],
