@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pet_life_gh/screens/Home2/Component/new_arrival_item.dart';
 
 const borderColor = Color(0xFF504A4A);
 const blue = Color(0xFF0A1D3A);
@@ -47,6 +46,7 @@ List newArrivalPics = [
   'asset/images/cane.jpeg',
   'asset/images/chihuahua.jpeg',
 ];
+ String loggedInUserID = '';
 
 List NewArrivalPrice = [
   'GHS 2000',

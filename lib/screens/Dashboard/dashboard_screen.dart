@@ -28,11 +28,6 @@ class DashboardScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           GestureDetector(
-            onTap: () {},
-            child: Icon(Icons.person, color: blue),
-          ),
-          SizedBox(width: 12),
-          GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -50,7 +45,7 @@ class DashboardScreen extends StatelessWidget {
       body: Body(),
       backgroundColor: white,
       bottomNavigationBar: BottomNavBar(
-        selectedIcon: BottomNavState.home,
+        selectedIcon: BottomNavState.shop,
       ),
     );
   }

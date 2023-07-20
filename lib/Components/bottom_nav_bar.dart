@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_life_gh/enum.dart';
 import 'package:pet_life_gh/screens/Dashboard/dashboard_screen.dart';
 import 'package:pet_life_gh/screens/Favourites/favouites_screen.dart';
+import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 import 'package:pet_life_gh/screens/Log%20In/log_in_screen.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
 import 'package:pet_life_gh/screens/Settings/settings_screen.dart';
@@ -32,7 +33,7 @@ class BottomNavBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DashboardScreen(),
+                  builder: (context) => HomeSreen2(),
                 ),
               );
             },
@@ -90,7 +91,7 @@ class BottomNavBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CartPage(),
+                  builder: (context) => DashboardScreen(),
                 ),
               );
             },
@@ -99,14 +100,14 @@ class BottomNavBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.shopping_cart,
-                  color: BottomNavState.cart == selectedIcon ? green : grey,
-                  size: 20,
+                  Icons.shopify,
+                  color: BottomNavState.shop == selectedIcon ? green : grey,
+                  size: 23,
                 ),
                 Text(
-                  "Cart",
+                  "Shop",
                   style: TextStyle(
-                    color: BottomNavState.cart == selectedIcon ? green : grey,
+                    color: BottomNavState.shop == selectedIcon ? green : grey,
                     fontSize: 12,
                   ),
                 ),

@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/constants.dart';
-import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 import 'package:pet_life_gh/screens/Splash/splash_screen.dart';
 
-void main() {
+void main()async { 
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

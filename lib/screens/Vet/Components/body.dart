@@ -97,6 +97,6 @@ class Body extends StatelessWidget {
         ),
       ),
     );
-    ;
+    
   }
 }

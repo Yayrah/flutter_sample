@@ -41,7 +41,7 @@ class _CartPageState extends State<CartPage> {
       ),
       body: Body(),
       backgroundColor: white,
-      bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.cart),
+      bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.shop),
     );
   }
 }

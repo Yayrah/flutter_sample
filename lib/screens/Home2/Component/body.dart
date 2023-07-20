@@ -20,10 +20,10 @@ class Body extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -31,15 +31,15 @@ class Body extends StatelessWidget {
                     Text(
                       "Welcome!",
                       style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w400,
-                      ),
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                          color: blue),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
-                      "Explore Amazing \n Offers",
+                      "Explore Amazing \n Offers!",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w400,
@@ -50,40 +50,67 @@ class Body extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      "Get your dream pet \n nationwide",
+                      "Get your dream pet nationwide",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 50,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: grey)),
-                      child: Center(
-                        child: Text(
-                          "SHOP NOW",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: deepBlue),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: 50,
+                        width: 105,
+                        decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(7),
+                            border: Border.all(color: grey)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "SHOP NOW",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: blue),
+                            ),
+                            Icon(Icons.arrow_right_alt_rounded, color: blue)
+                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              CircleAvatar(
-                radius: 70,
-                backgroundImage: AssetImage('asset/images/boxer.jpeg'),
-              )
+              Container(
+                height: 145,
+                width: 133,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(7),
+                  border: Border.all(color: green, width: 1),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: white,
+                    border: Border.all(color: white, width: 5),
+                    borderRadius: BorderRadius.circular(7),
+                    image: DecorationImage(
+                      image: AssetImage('asset/images/boxer.jpeg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              // CircleAvatar(
+              //   radius: 70,
+              //   backgroundImage: AssetImage('asset/images/boxer.jpeg'),
+              // )
             ],
           ),
           SizedBox(

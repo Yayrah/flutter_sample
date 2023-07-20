@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/screens/Dashboard/dashboard_screen.dart';
 import 'package:pet_life_gh/screens/Forgot%20Password/forgot_passwor_screen.dart';
+import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 import 'package:pet_life_gh/screens/Sign%20Up/sign_up_screen.dart';
 
 import '../../../constants.dart';
@@ -16,6 +20,41 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   bool isPasswordVisible = false;
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+
+      loggedInUserID = FirebaseAuth.instance.currentUser!.uid;
+
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeSreen2()),
+          (route) => false);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text(e.toString()),
+            );
+          });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,7 +63,7 @@ class _BodyState extends State<Body> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 250,
+            height: 170,
             width: double.infinity,
             decoration: BoxDecoration(
               color: blue,
@@ -36,7 +75,7 @@ class _BodyState extends State<Body> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 140,
+                    height: 60,
                   ),
                   Text(
                     "Sign in to your \n Account",
@@ -73,6 +112,7 @@ class _BodyState extends State<Body> {
                   height: 45,
                 ),
                 TextField(
+                  controller: _emailController,
                   autocorrect: false,
                   autofocus: false,
                   cursorColor: blue,
@@ -102,6 +142,7 @@ class _BodyState extends State<Body> {
                   height: 30,
                 ),
                 TextField(
+                  controller: _passwordController,
                   autocorrect: false,
                   autofocus: false,
                   cursorColor: blue,
@@ -168,20 +209,13 @@ class _BodyState extends State<Body> {
                   height: 30,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DashboardScreen(),
-                      ),
-                    );
-                  },
+                  onTap: signIn,
                   child: Container(
                     height: 50,
                     width: 350,
                     decoration: BoxDecoration(
                       color: green,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(4),
                     ),
                     child: Center(
                       child: Text(
@@ -233,7 +267,7 @@ class _BodyState extends State<Body> {
                       decoration: BoxDecoration(
                         color: grey,
                         borderRadius: BorderRadius.circular(
-                          10,
+                          4,
                         ),
                       ),
                       child: Center(
@@ -246,10 +280,11 @@ class _BodyState extends State<Body> {
                               height: 16,
                               width: 18,
                             ),
+                            SizedBox(width: 6),
                             Text(
-                              "Google",
+                              "Apple",
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -263,7 +298,7 @@ class _BodyState extends State<Body> {
                       decoration: BoxDecoration(
                         color: grey,
                         borderRadius: BorderRadius.circular(
-                          10,
+                          4,
                         ),
                       ),
                       child: Center(
@@ -272,14 +307,15 @@ class _BodyState extends State<Body> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'asset/icon/apple.png',
+                              'asset/icon/google.png',
                               height: 16,
                               width: 18,
                             ),
+                            SizedBox(width: 6),
                             Text(
                               "Google",
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),

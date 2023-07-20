@@ -20,6 +20,6 @@ class SplashScreen extends StatelessWidget {
         splashTransition: SplashTransition.scaleTransition,
       ),
     );
-    ;
+    
   }
 }
