@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 170,
+            height: 240,
             width: double.infinity,
             decoration: BoxDecoration(
               color: blue,
@@ -74,9 +74,7 @@ class _BodyState extends State<Body> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 60,
-                  ),
+                  Spacer(),
                   Text(
                     "Sign in to your \n Account",
                     style: TextStyle(
@@ -95,7 +93,10 @@ class _BodyState extends State<Body> {
                       fontSize: 15,
                       color: white,
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ),

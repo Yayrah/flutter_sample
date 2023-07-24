@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:pet_life_gh/Components/bottom_nav_bar.dart';
 import 'package:pet_life_gh/constants.dart';
 import 'package:pet_life_gh/enum.dart';
+import 'package:pet_life_gh/screens/Add%20New%20Arrival/add_new_arrival.dart';
 import 'package:pet_life_gh/screens/Home2/Component/body.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
-import 'package:pet_life_gh/screens/Add%20Featured%20Product/Component/added_featured_product.dart' as drawer;
+import 'package:pet_life_gh/screens/Add%20Featured%20Product/Component/added_featured_product.dart'
+    as drawer;
 
+import '../../Components/custom_drawer.dart';
 import '../../Components/drawer_tile.dart';
 import 'Component/category_pop_up_item.dart';
 
@@ -144,21 +147,7 @@ class _HomeSreen2State extends State<HomeSreen2> {
           )
         ],
       ),
-      drawer: Drawer(
-        backgroundColor: white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            DrawerTile
-            (
-              screen: drawer.AddFeaturedProduct(),
-              icon: Icons.add_home_work_sharp,
-              title: 'Add Featured Product',
-            ),
-          ],
-        ),
-      ),
+      drawer: CustomDrawer(),
       floatingActionButton: GestureDetector(
         onTap: categoryPopUp,
         child: Container(
@@ -178,4 +167,3 @@ class _HomeSreen2State extends State<HomeSreen2> {
     );
   }
 }
-

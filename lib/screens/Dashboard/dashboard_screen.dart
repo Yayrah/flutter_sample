@@ -6,6 +6,7 @@ import 'package:pet_life_gh/enum.dart';
 import 'package:pet_life_gh/screens/Dashboard/Components/body.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
 
+import '../../Components/custom_drawer.dart';
 import '../../constants.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class DashboardScreen extends StatelessWidget {
           SizedBox(width: 15),
         ],
       ),
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       body: Body(),
       backgroundColor: white,
       bottomNavigationBar: BottomNavBar(

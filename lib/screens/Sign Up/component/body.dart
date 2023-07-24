@@ -34,21 +34,32 @@ class _BodyState extends State<Body> {
   }
 
   Future signUp() async {
-    if (confirmPasword()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      addUserDetails(
-        _nameController.text.trim(),
-        _emailController.text.trim(),
-      );
-    }
+    try {
+      if (confirmPasword()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        addUserDetails(
+          _nameController.text.trim(),
+          _emailController.text.trim(),
+        );
+      }
 
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => HomeSreen2()),
-        (route) => false);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeSreen2()),
+          (route) => false);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Center(child: Text('Error')),
+              content: Text(e.toString()),
+            );
+          });
+    }
   }
 
   bool confirmPasword() {

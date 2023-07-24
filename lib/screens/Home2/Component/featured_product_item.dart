@@ -4,19 +4,23 @@ import '../../../constants.dart';
 import '../../Feature Product/feature_product.dart';
 
 class FeaturedProductItem extends StatelessWidget {
+  final int index;
   final String name;
   final String imageLocation;
   const FeaturedProductItem({
     Key? key,
     required this.name,
     required this.imageLocation,
+    required this.index,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: ((context) =>FeaturedProductPage() )));
+      onTap: () {
+        selectedFeaturedProdIndex = index;
+        Navigator.push(context,
+            MaterialPageRoute(builder: ((context) => FeaturedProductPage())));
       },
       child: Container(
         height: 209,

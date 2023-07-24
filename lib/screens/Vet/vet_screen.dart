@@ -5,6 +5,7 @@ import 'package:pet_life_gh/Components/bottom_nav_bar.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
 import 'package:pet_life_gh/screens/Vet/Components/body.dart';
 
+import '../../Components/custom_drawer.dart';
 import '../../constants.dart';
 import '../../enum.dart';
 
@@ -26,27 +27,8 @@ class VetScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Icon(Icons.person, color: blue),
-          ),
-          SizedBox(width: 12),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CartPage(),
-                ),
-              );
-            },
-            child: Icon(Icons.shopping_cart_rounded, color: blue),
-          ),
-          SizedBox(width: 15),
-        ],
       ),
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       body: Body(),
       backgroundColor: white,
       bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.vet),

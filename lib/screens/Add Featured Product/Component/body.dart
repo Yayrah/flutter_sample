@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:file_picker/file_picker.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 
@@ -22,7 +18,6 @@ class Body extends StatefulWidget {
 String addedProductImage = '';
 String addedProductImageUrl = '';
 String addedProductImageFilePath = '';
-// ListResult? addedProductImageResultList;
 
 class _BodyState extends State<Body> {
   final _nameController = TextEditingController();
@@ -101,14 +96,13 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: ListView.builder(
+            physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Center(
@@ -327,30 +321,30 @@ class _BodyState extends State<Body> {
             },
             itemCount: 1,
           ),
-          GestureDetector(
-            onTap: addFeaturedProductDetails,
-            child: Container(
-              height: 53,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(2), topRight: Radius.circular(2)),
-                color: blue,
-              ),
-              child: Center(
-                child: Text(
-                  'Save',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
+        ),
+        GestureDetector(
+          onTap: addFeaturedProductDetails,
+          child: Container(
+            height: 58,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(2), topRight: Radius.circular(2)),
+              color: blue,
+            ),
+            child: Center(
+              child: Text(
+                'Save',
+                style: TextStyle(
+                  color: white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

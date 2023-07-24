@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/screens/Add%20Featured%20Product/Component/added_featured_product.dart';
 
@@ -18,28 +20,22 @@ class Body extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => AddFeaturedProduct())));
-            },
+          Container(
+            height: 250,
+            width: 250,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(11),
+              border: Border.all(color: green, width: 1),
+            ),
             child: Container(
-              height: 250,
-              width: 250,
               decoration: BoxDecoration(
-                color: Colors.transparent,
+                color: white,
+                border: Border.all(color: white, width: 5),
                 borderRadius: BorderRadius.circular(11),
-                border: Border.all(color: green, width: 1),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: white,
-                  border: Border.all(color: white, width: 5),
-                  borderRadius: BorderRadius.circular(11),
-                  image: DecorationImage(
-                    image: AssetImage('asset/images/boston.jpeg'),
-                    fit: BoxFit.cover,
-                  ),
+                image: DecorationImage(
+                  image: AssetImage('asset/images/boston.jpeg'),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -66,7 +62,7 @@ class Body extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Vizla",
+                    featuredProdNames[selectedFeaturedProdIndex],
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -91,7 +87,7 @@ class Body extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Female",
+                    featuredProductGender[selectedFeaturedProdIndex],
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -124,7 +120,7 @@ class Body extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "5 months",
+                    '${featuredProductAge[selectedFeaturedProdIndex]} Months',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -149,7 +145,7 @@ class Body extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "KNUST",
+                    featuredProductLocation[selectedFeaturedProdIndex],
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -164,7 +160,7 @@ class Body extends StatelessWidget {
             height: 50,
           ),
           Text(
-            "GHS 7000",
+            featuredProductPrice[selectedFeaturedProdIndex].toString(),
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w400,

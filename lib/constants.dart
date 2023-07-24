@@ -17,13 +17,11 @@ List tabNames = [
   'Pet Watch',
 ];
 
-List featuredProdNames = [
-  'Boxer',
-  'Bulldog',
-  'Bullmastiff',
-  'Cane Corso',
-  'Chihuahua',
-];
+List featuredProdNames = [];
+List featuredProductGender = [];
+List featuredProductAge = [];
+List featuredProductLocation = [];
+List featuredProductPrice = [];
 
 List featuredProdPics = [
   'asset/images/boxer.jpeg',
@@ -33,34 +31,24 @@ List featuredProdPics = [
   'asset/images/chihuahua.jpeg',
 ];
 
-List newArrivalNames = [
-  'Bulldog',
-  'Pug',
-  'Akita',
-  'Dobberman',
-];
+List newArrivalNames = [];
 
 List newArrivalPics = [
   'asset/images/boston.jpeg',
   'asset/images/bullmastiff.jpeg',
   'asset/images/cane.jpeg',
   'asset/images/chihuahua.jpeg',
+  'asset/images/boston.jpeg',
+  'asset/images/bullmastiff.jpeg',
+  'asset/images/cane.jpeg',
+  'asset/images/chihuahua.jpeg',
 ];
- String loggedInUserID = '';
+String loggedInUserID = '';
 
-List NewArrivalPrice = [
-  'GHS 2000',
-  'GHS 3000',
-  'GHS 2500',
-  'GHS 3450',
-];
-
-List NewArrivalGender = [
-  'Female',
-  'Male',
-  'Female',
-  'Male',
-];
+List NewArrivalPrice = [];
+List NewArrivalAge = [];
+List NewArrivalGender = [];
+List NewArrivalLocation = [];
 
 List categoryNames = [
   'Dogs',
@@ -75,3 +63,21 @@ List categoryPics = [
   'asset/images/cane.jpeg',
   'asset/images/chihuahua.jpeg',
 ];
+
+List vetNames = [
+  'Lydia Akuffo',
+  'Ronald Twum',
+  'Abeiku Essel',
+  'Kojo Antwi',
+];
+List vetImageLocation = [
+  'asset/images/vet_pic.png',
+  'asset/images/pic_1.jpg',
+  'asset/images/pic_2.jpg',
+  'asset/images/pic_3.jpg',
+];
+List vetStars = [5, 1, 4, 2];
+List vetExp = [4, 8, 1, 5];
+
+int selectedFeaturedProdIndex = 0;
+int selectedNewArrivalIndex = 0;

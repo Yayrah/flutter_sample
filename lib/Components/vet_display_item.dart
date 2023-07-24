@@ -1,12 +1,23 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class VetDisplayItem extends StatelessWidget {
+  final String imageLocation;
+  final String name;
+  final int experience;
+  final int star;
+
   const VetDisplayItem({
     Key? key,
+    required this.imageLocation,
+    required this.name,
+    required this.experience,
+    required this.star,
   }) : super(key: key);
 
   @override
@@ -36,7 +47,7 @@ class VetDisplayItem extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   image: DecorationImage(
-                    image: AssetImage('asset/images/vet_pic.png'),
+                    image: AssetImage(imageLocation),
                     fit: BoxFit.cover,
                   )),
             ),
@@ -47,7 +58,7 @@ class VetDisplayItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Dr. Lydia Akuffo',
+                    name,
                     style: TextStyle(
                       color: black,
                       fontSize: 17,
@@ -58,11 +69,21 @@ class VetDisplayItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.star_rate_rounded, color: Colors.amber),
-                      Icon(Icons.star_rate_rounded, color: Colors.amber),
-                      Icon(Icons.star_rate_rounded, color: Colors.amber),
-                      Icon(Icons.star_rate_rounded, color: Colors.amber),
-                      Icon(Icons.star_rate_rounded, color: Colors.amber),
+                      star > 0
+                          ? Icon(Icons.star_rate_rounded, color: Colors.amber)
+                          : Icon(Icons.star_border_rounded, color: grey),
+                      star > 1
+                          ? Icon(Icons.star_rate_rounded, color: Colors.amber)
+                          : Icon(Icons.star_border_rounded, color: grey),
+                      star > 2
+                          ? Icon(Icons.star_rate_rounded, color: Colors.amber)
+                          : Icon(Icons.star_border_rounded, color: grey),
+                      star > 3
+                          ? Icon(Icons.star_rate_rounded, color: Colors.amber)
+                          : Icon(Icons.star_border_rounded, color: grey),
+                      star > 4
+                          ? Icon(Icons.star_rate_rounded, color: Colors.amber)
+                          : Icon(Icons.star_border_rounded, color: grey),
                     ],
                   ),
                   Row(
@@ -76,7 +97,7 @@ class VetDisplayItem extends StatelessWidget {
                       ),
                       SizedBox(width: 4),
                       Text(
-                        '4 Years',
+                        '$experience Years',
                         style: TextStyle(
                           color: grey,
                           fontSize: 14,

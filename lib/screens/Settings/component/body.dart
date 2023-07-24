@@ -21,10 +21,18 @@ class Body extends StatelessWidget {
           height: 65,
           width: 200,
           decoration: BoxDecoration(
-            color: Colors.red,
+            borderRadius: BorderRadius.circular(7),
+            color: Colors.red.shade100,
           ),
           child: Center(
-            child: Text('Logout'),
+            child: Text(
+              'Logout',
+              style: TextStyle(
+                color: Colors.red.shade700,
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
         ),
       ),

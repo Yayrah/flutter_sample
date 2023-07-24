@@ -39,7 +39,6 @@ class Body extends StatelessWidget {
                     child: TextField(
                       autocorrect: false,
                       autofocus: false,
-                      
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
@@ -53,8 +52,8 @@ class Body extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(color: blue, width: 1),
                         ),
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 16.5),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 16.5),
                         hintText: "Search Veterinarian's name...",
                         hintStyle: TextStyle(
                             color: grey,
@@ -87,16 +86,20 @@ class Body extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (contect, index) {
-                  return VetDisplayItem();
+                  return VetDisplayItem(
+                    name: vetNames[index],
+                    imageLocation: vetImageLocation[index],
+                    experience: vetExp[index],
+                    star: vetStars[index],
+                  );
                 },
                 separatorBuilder: (context, index) {
                   return SizedBox(height: 25);
                 },
-                itemCount: 6),
+                itemCount: vetNames.length),
           ],
         ),
       ),
     );
-    
   }
 }

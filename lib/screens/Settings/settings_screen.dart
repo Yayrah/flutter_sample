@@ -4,6 +4,7 @@ import 'package:pet_life_gh/constants.dart';
 import 'package:pet_life_gh/screens/My%20Cart/cart_page.dart';
 import 'package:pet_life_gh/screens/Settings/component/body.dart';
 
+import '../../Components/custom_drawer.dart';
 import '../../enum.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -24,27 +25,8 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Icon(Icons.person, color: blue),
-          ),
-          SizedBox(width: 12),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CartPage(),
-                ),
-              );
-            },
-            child: Icon(Icons.shopping_cart_rounded, color: blue),
-          ),
-          SizedBox(width: 15),
-        ],
       ),
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       backgroundColor: white,
       body: Body(),
       bottomNavigationBar: BottomNavBar(selectedIcon: BottomNavState.settings),

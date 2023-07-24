@@ -3,7 +3,6 @@ import 'package:pet_life_gh/Components/default_back_button.dart';
 import 'package:pet_life_gh/constants.dart';
 import 'package:pet_life_gh/screens/Feature%20Product/Component/body.dart';
 
-
 class FeaturedProductPage extends StatefulWidget {
   const FeaturedProductPage({super.key});
 
@@ -34,4 +33,3 @@ class _FeaturedProductPageState extends State<FeaturedProductPage> {
     );
   }
 }
-
