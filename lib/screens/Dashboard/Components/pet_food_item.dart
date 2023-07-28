@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/screens/Pet%20Food%20Item/pet_food_item_page.dart';
 
 import '../../../constants.dart';
 
@@ -19,7 +20,9 @@ class _PetFoodItemState extends State<PetFoodItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>PetFoodItemPage()));
+      },
       child: Container(
         height: 190,
         width: 184,

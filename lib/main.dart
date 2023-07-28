@@ -6,6 +6,7 @@ import 'package:pet_life_gh/screens/Splash/splash_screen.dart';
 void main()async { 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  
   runApp(const MyApp());
 }
 
