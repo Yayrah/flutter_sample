@@ -66,8 +66,11 @@ class NewArrivalItem extends StatelessWidget {
                   color: green,
                   borderRadius: BorderRadius.circular(9),
                   image: DecorationImage(
-                      image: AssetImage(imageLocation), fit: BoxFit.cover),
+                      image: NetworkImage(imageLocation), fit: BoxFit.cover),
                 ),
+                child: imageLocation == ''
+                    ? Center(child: Icon(Icons.pets_rounded, color: grey))
+                    : SizedBox(),
               ),
             ),
             SizedBox(

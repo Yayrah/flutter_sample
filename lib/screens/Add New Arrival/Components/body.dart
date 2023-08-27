@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 
@@ -18,14 +21,12 @@ class Body extends StatefulWidget {
 String addedProductImage = '';
 String addedProductImageUrl = '';
 String addedProductImageFilePath = '';
-// ListResult? addedProductImageResultList;
 
 class _BodyState extends State<Body> {
   final _nameController = TextEditingController();
   final _ageController = TextEditingController();
   final _priceController = TextEditingController();
   final _locationController = TextEditingController();
-  final _genderController = TextEditingController();
 
   @override
   void dispose() {
@@ -33,8 +34,16 @@ class _BodyState extends State<Body> {
     _nameController.dispose();
     _locationController.dispose();
     _priceController.dispose();
-    _genderController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    addedProductImageUrl = '';
+    addedProductImageFilePath = '';
+    genderValue = 'Male';
+
+    super.initState();
   }
 
   Future addNewArrivalDetails() async {
@@ -43,14 +52,14 @@ class _BodyState extends State<Body> {
         .add({
       'Name': _nameController.text.trim(),
       'Age': int.parse(_ageController.text.trim()),
-      'Gender': _genderController.text.trim(),
+      'Gender': genderValue,
       'Location': _locationController.text.trim(),
       'Price': int.parse(_priceController.text.trim()),
     });
 
     final docID = document.id;
 
-    // uploadPic(docID, addedProductImageFilePath);
+    uploadPic(docID, addedProductImageFilePath);
 
     await FirebaseFirestore.instance
         .collection('New Arrival Products')
@@ -68,33 +77,33 @@ class _BodyState extends State<Body> {
     );
   }
 
-  // void addImage() async {
-  //   try {
-  //     final results = await FilePicker.platform.pickFiles(
-  //       allowMultiple: false,
-  //       allowedExtensions: ['jpg', 'jpeg', 'png'],
-  //       type: FileType.custom,
-  //     );
-  //
-  //     if (results != null) {
-  //       addedProductImage = results.files.single.name;
-  //       addedProductImageFilePath = results.files.single.path!;
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
+  void addImage() async {
+    try {
+      final results = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        allowedExtensions: ['jpg', 'jpeg', 'png'],
+        type: FileType.custom,
+      );
 
-  // Future uploadPic(String productID, String filePath) async {
-  //   File file = File(filePath);
-  //   final querySnapshot = await FirebaseStorage.instance
-  //       .ref('$loggedInUserID/Added Products/$productID')
-  //       .child('image.jpeg')
-  //       .putFile(file);
-  //
-  //   addedProductImageUrl = await querySnapshot.ref.getDownloadURL();
-  //   print(addedProductImageUrl);
-  // }
+      if (results != null) {
+        addedProductImage = results.files.single.name;
+        addedProductImageFilePath = results.files.single.path!;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future uploadPic(String productID, String filePath) async {
+    File file = File(filePath);
+    final querySnapshot = await FirebaseStorage.instance
+        .ref('$loggedInUserID/Added Products/$productID')
+        .child('image.jpeg')
+        .putFile(file);
+
+    addedProductImageUrl = await querySnapshot.ref.getDownloadURL();
+    print(addedProductImageUrl);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,19 +133,19 @@ class _BodyState extends State<Body> {
                           width: 120,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: addedProductImage == ''
+                            border: addedProductImageFilePath == ''
                                 ? Border.all(color: grey, width: 1)
                                 : null,
-                            image: addedProductImage == ''
+                            image: addedProductImageFilePath == ''
                                 ? null
                                 : DecorationImage(
                                     fit: BoxFit.cover,
                                     image: FileImage(
-                                      File(addedProductImage),
+                                      File(addedProductImageFilePath),
                                     ),
                                   ),
                           ),
-                          child: addedProductImage == ''
+                          child: addedProductImageFilePath == ''
                               ? Center(
                                   child: Icon(
                                     Icons.pets,
@@ -148,7 +157,7 @@ class _BodyState extends State<Body> {
                         ),
                         SizedBox(width: 10),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: addImage,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -230,30 +239,58 @@ class _BodyState extends State<Body> {
                           SizedBox(
                             height: 20,
                           ),
-                          TextField(
-                            controller: _genderController,
-                            keyboardType: TextInputType.text,
-                            autocorrect: false,
-                            autofocus: false,
-                            cursorColor: blue,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: grey, width: 1),
+                          DropdownButton2(
+                            buttonStyleData: ButtonStyleData(
+                              elevation: 0,
+                              height: 60,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: grey, width: 1),
+                                color: white,
+                                borderRadius: BorderRadius.circular(9),
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: lightBlue,
-                                  width: 1,
-                                ),
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 20,
-                              ),
-                              label: Text("Gender"),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 15),
                             ),
+                            underline: Text(''),
+                            dropdownStyleData: DropdownStyleData(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            iconStyleData: IconStyleData(
+                              icon: Icon(Icons.keyboard_arrow_down_rounded),
+                              iconDisabledColor: black,
+                              iconEnabledColor: green,
+                            ),
+                            isExpanded: true,
+                            hint: Center(
+                              child: Text(
+                                'Gender',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: black,
+                                    fontWeight: FontWeight.w200),
+                              ),
+                            ),
+                            items: genderList.map((String serviceCategoryList) {
+                              return DropdownMenuItem(
+                                child: Text(
+                                  serviceCategoryList,
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: true,
+                                ),
+                                value: serviceCategoryList,
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                genderValue = newValue!;
+                              });
+                            },
+                            value: genderValue,
                           ),
                           SizedBox(
                             height: 20,

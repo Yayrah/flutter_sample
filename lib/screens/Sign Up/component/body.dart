@@ -36,13 +36,22 @@ class _BodyState extends State<Body> {
   Future signUp() async {
     try {
       if (confirmPasword()) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final document = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
-        );
+        )
+            .catchError((err) {
+          throw Exception(
+              'An error occurred whilst creating the user. \n Try again later');
+        });
+
+        final userID = document.user!.uid;
+
         addUserDetails(
           _nameController.text.trim(),
           _emailController.text.trim(),
+          userID,
         );
       }
 
@@ -75,10 +84,11 @@ class _BodyState extends State<Body> {
     }
   }
 
-  Future addUserDetails(String name, String email) async {
+  Future addUserDetails(String name, String email, String id) async {
     await FirebaseFirestore.instance.collection('users').add({
       'Name': name,
       'Email': email,
+      'User ID': id,
     });
   }
 

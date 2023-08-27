@@ -1,10 +1,22 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class CartItem extends StatefulWidget {
+  final String image;
+  final int price;
+  final double size;
+  final int quantity;
+  final String title;
   const CartItem({
     Key? key,
+    required this.image,
+    required this.price,
+    required this.size,
+    required this.quantity,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -13,6 +25,12 @@ class CartItem extends StatefulWidget {
 
 class _CartItemState extends State<CartItem> {
   int itemNumber = 0;
+
+  @override
+  void initState() {
+    itemNumber = widget.quantity;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +45,16 @@ class _CartItemState extends State<CartItem> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              "asset/images/pet_clothing.png",
+            Container(
               height: 130,
               width: 160,
+              decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: BorderRadius.circular(9),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(widget.image),
+                  )),
             ),
             SizedBox(
               width: 15,
@@ -48,7 +72,7 @@ class _CartItemState extends State<CartItem> {
                     height: 10,
                   ),
                   Text(
-                    "Dog Shirt",
+                    widget.title,
                     style:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
                   ),
@@ -56,7 +80,7 @@ class _CartItemState extends State<CartItem> {
                     height: 15,
                   ),
                   Text(
-                    "Medium",
+                    '${widget.size} kg',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 15,
@@ -67,7 +91,7 @@ class _CartItemState extends State<CartItem> {
                     height: 20,
                   ),
                   Text(
-                    "\$" + "40.00",
+                    "\$ ${widget.price}",
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 20,
@@ -108,7 +132,6 @@ class _CartItemState extends State<CartItem> {
                       itemNumber > 0
                           ? setState(() {
                               itemNumber--;
-                              itemNumber = itemNumber - 1;
                             })
                           : null;
                     },

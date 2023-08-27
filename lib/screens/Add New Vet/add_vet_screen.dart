@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../Components/default_back_button.dart';
 import '../../constants.dart';
-import '../Add New Arrival/Components/body.dart';
+import '../Add New Vet/Components/body.dart';
 
-class AddNewArrivals extends StatelessWidget {
-  const AddNewArrivals({Key? key}) : super(key: key);
+class AddVetScreen extends StatelessWidget {
+  const AddVetScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class AddNewArrivals extends StatelessWidget {
         elevation: 0,
         leading: DefaultBackButton(),
         title: Text(
-          "Add New Arrival",
+          "Add New Veterinarian",
           style:
               TextStyle(fontSize: 20, color: blue, fontWeight: FontWeight.w500),
         ),

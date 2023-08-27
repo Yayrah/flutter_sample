@@ -1,12 +1,25 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/material.dart';
+import 'package:pet_life_gh/screens/Dashboard/Components/pet_food_item.dart';
+
+import '../../../Services/read_data.dart';
 import '../../../constants.dart';
+import '../../Pet Food Item/pet_food_item_page.dart';
 
 class PetClothingItem extends StatefulWidget {
+  final int index;
+  final String title;
+  final String image;
+  final int price;
   bool isItemFavourite = false;
-   PetClothingItem({
+  PetClothingItem({
     Key? key,
     this.isItemFavourite = false,
+    required this.title,
+    required this.image,
+    required this.price,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -14,11 +27,14 @@ class PetClothingItem extends StatefulWidget {
 }
 
 class _PetClothingItemState extends State<PetClothingItem> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        selectedProductIndex = widget.index;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => PetFoodItemPage()));
+      },
       child: Container(
         height: 190,
         width: 180,
@@ -50,7 +66,7 @@ class _PetClothingItemState extends State<PetClothingItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "\$" + "400",
+                        "\$ ${widget.price}",
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w400,
@@ -60,7 +76,7 @@ class _PetClothingItemState extends State<PetClothingItem> {
                         height: 5,
                       ),
                       Text(
-                        "Pro plan vet",
+                        widget.title,
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w400,
@@ -70,10 +86,15 @@ class _PetClothingItemState extends State<PetClothingItem> {
                     ],
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       setState(() {
                         widget.isItemFavourite = !widget.isItemFavourite;
                       });
+                      if (widget.isItemFavourite) {
+                        await ReadData().addFavourites(widget.index);
+                      } else {
+                        await ReadData().removeFavourite(widget.index);
+                      }
                     },
                     child: Icon(
                       widget.isItemFavourite

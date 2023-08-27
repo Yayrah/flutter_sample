@@ -7,10 +7,13 @@ import 'package:pet_life_gh/screens/Single%20Vet/Component/sinle_vet_screen.dart
 
 import '../constants.dart';
 
+int vetSelectedIndex = 0;
+
 class VetDisplayItem extends StatelessWidget {
+  final int index;
   final String imageLocation;
   final String name;
-  final int experience;
+  final String experience;
   final int star;
 
   const VetDisplayItem({
@@ -19,6 +22,7 @@ class VetDisplayItem extends StatelessWidget {
     required this.name,
     required this.experience,
     required this.star,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -26,6 +30,7 @@ class VetDisplayItem extends StatelessWidget {
     return Center(
       child: GestureDetector(
         onTap: () {
+          vetSelectedIndex = index;
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => SingleVetScreenPage()));
         },
@@ -51,11 +56,17 @@ class VetDisplayItem extends StatelessWidget {
                 height: 134,
                 width: 140,
                 decoration: BoxDecoration(
+                    color: white,
                     borderRadius: BorderRadius.circular(7),
                     image: DecorationImage(
-                      image: AssetImage(imageLocation),
+                      image: NetworkImage(imageLocation),
                       fit: BoxFit.cover,
                     )),
+                child: imageLocation == ''
+                    ? Center(
+                        child: Icon(Icons.person, color: grey),
+                      )
+                    : null,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 17),

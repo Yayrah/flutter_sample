@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:pet_life_gh/screens/Add%20New%20Vet/add_vet_screen.dart';
 
 import '../constants.dart';
 import '../screens/Add Featured Product/Component/added_featured_product.dart';
@@ -39,6 +40,18 @@ class CustomDrawer extends StatelessWidget {
                 screen: AddNewArrivals(),
                 icon: Icons.add_home,
                 title: 'Add New Arrivals',
+              ),
+              SizedBox(height: 20),
+              DrawerTile(
+                screen: AddVetScreen(),
+                icon: Icons.add_home,
+                title: 'Add New Veterinarian',
+              ),
+              SizedBox(height: 20),
+              DrawerTile(
+                screen: AddNewArrivals(),
+                icon: Icons.add_home,
+                title: 'Add New Veterinarian',
               ),
             ],
           ),

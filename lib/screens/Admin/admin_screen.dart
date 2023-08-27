@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../Components/default_back_button.dart';
 import '../../constants.dart';
-import '../Add New Arrival/Components/body.dart';
+import '../Admin/Components/body.dart';
 
-class AddNewArrivals extends StatelessWidget {
-  const AddNewArrivals({Key? key}) : super(key: key);
+class AdminScreen extends StatelessWidget {
+  const AdminScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +12,9 @@ class AddNewArrivals extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: white,
         elevation: 0,
-        leading: DefaultBackButton(),
+        automaticallyImplyLeading: false,
         title: Text(
-          "Add New Arrival",
+          "Administrator",
           style:
               TextStyle(fontSize: 20, color: blue, fontWeight: FontWeight.w500),
         ),

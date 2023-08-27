@@ -8,6 +8,12 @@ const grey = Color(0xFFd9d9d9);
 const black = Color(0xFF000000);
 Color lightBlue = Color(0xffB8D4FE);
 Color deepBlue = Color(0xff1440B1);
+Color sectionColor = Color(0xffF5F7F9);
+Color chatBlue = Color(0xff0076F7);
+Color chatRed = Color(0xffFF1AA3);
+Color chatGrey = Color(0xffF2F4F5);
+Color textGreyColor = Color(0xff9BA1A9);
+Color chatTimeColor = Color(0xffA7A4A4);
 
 List tabNames = [
   'Pet Products',
@@ -17,32 +23,45 @@ List tabNames = [
   'Pet Watch',
 ];
 
+List<String> genderList = ['Male', 'Female'];
+String genderValue = 'Male';
+
+List<String> experienceList = [
+  'Beginner (0-2)Years',
+  'Amateur (3-4)Years',
+  'Professional (4-7)Years',
+  'Expert (9+ Years)',
+];
+String experienceValue = 'Beginner (0-2)Years';
+
+List<String> regionList = [
+  'Eastern Region',
+  'Western Region',
+  'Volta Region',
+  'Greater-Accra Region',
+  'Ashanti Region',
+];
+String regionValue = 'Eastern Region';
+
+List<String> categoryList = [
+  'Pet Food',
+  'Pet Clothing',
+  'Pet Accessories',
+  'Others',
+];
+String categoryValue = 'Pet Food';
+
 List featuredProdNames = [];
 List featuredProductGender = [];
 List featuredProductAge = [];
 List featuredProductLocation = [];
 List featuredProductPrice = [];
 
-List featuredProdPics = [
-  'asset/images/boxer.jpeg',
-  'asset/images/bulldog.jpeg',
-  'asset/images/bullmastiff.jpeg',
-  'asset/images/cane.jpeg',
-  'asset/images/chihuahua.jpeg',
-];
+List featuredProdPics = [];
 
 List newArrivalNames = [];
 
-List newArrivalPics = [
-  'asset/images/boston.jpeg',
-  'asset/images/bullmastiff.jpeg',
-  'asset/images/cane.jpeg',
-  'asset/images/chihuahua.jpeg',
-  'asset/images/boston.jpeg',
-  'asset/images/bullmastiff.jpeg',
-  'asset/images/cane.jpeg',
-  'asset/images/chihuahua.jpeg',
-];
+List newArrivalPics = [];
 String loggedInUserID = '';
 
 List NewArrivalPrice = [];

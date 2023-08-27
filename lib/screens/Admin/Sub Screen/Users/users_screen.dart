@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../Components/default_back_button.dart';
-import '../../constants.dart';
-import '../Add New Arrival/Components/body.dart';
+import '../../../../Components/default_back_button.dart';
+import '../../../../constants.dart';
+import '../../../Admin/Sub Screen/Users/Components/body.dart';
 
-class AddNewArrivals extends StatelessWidget {
-  const AddNewArrivals({Key? key}) : super(key: key);
+class UsersScreen extends StatelessWidget {
+  const UsersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class AddNewArrivals extends StatelessWidget {
         elevation: 0,
         leading: DefaultBackButton(),
         title: Text(
-          "Add New Arrival",
+          "Users",
           style:
               TextStyle(fontSize: 20, color: blue, fontWeight: FontWeight.w500),
         ),

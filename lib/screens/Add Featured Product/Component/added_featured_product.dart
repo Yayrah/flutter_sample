@@ -16,9 +16,9 @@ class AddFeaturedProduct extends StatelessWidget {
         elevation: 0,
         leading: DefaultBackButton(),
         title: Text(
-          "Add Featured Product",
+          "Add Product",
           style:
-              TextStyle(fontSize: 20, color: grey, fontWeight: FontWeight.w500),
+              TextStyle(fontSize: 20, color: blue, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
       ),

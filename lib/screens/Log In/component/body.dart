@@ -6,8 +6,10 @@ import 'package:pet_life_gh/screens/Dashboard/dashboard_screen.dart';
 import 'package:pet_life_gh/screens/Forgot%20Password/forgot_passwor_screen.dart';
 import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 import 'package:pet_life_gh/screens/Sign%20Up/sign_up_screen.dart';
+import 'package:pet_life_gh/screens/wrapper.dart';
 
 import '../../../constants.dart';
+import '../../Admin/admin_screen.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -33,16 +35,29 @@ class _BodyState extends State<Body> {
 
   Future signIn() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
+      if (_emailController.text.trim() != 'admin@admin.com') {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: _emailController.text.trim(),
+                password: _passwordController.text.trim())
+            .catchError((err) {
+          throw Exception('An error occurred. \n Try again later');
+        });
 
-      loggedInUserID = FirebaseAuth.instance.currentUser!.uid;
-
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => HomeSreen2()),
-          (route) => false);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Wrapper()),
+            (route) => false);
+      } else {
+        if (_passwordController.text.trim() == 'password') {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => AdminScreen()),
+              (route) => false);
+        } else {
+          throw Exception('No record of this user.');
+        }
+      }
     } catch (e) {
       showDialog(
           context: context,

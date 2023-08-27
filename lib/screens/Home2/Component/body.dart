@@ -18,6 +18,7 @@ class Body extends StatelessWidget {
     Future allData() async {
       await readData.getAllFeaturedProducts();
       await readData.getAllNewArrivals();
+      await readData.getUser();
     }
 
     return FutureBuilder(
@@ -172,34 +173,50 @@ class Body extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  CarouselSlider.builder(
-                    itemCount: featuredProdNames.length - 1,
-                    itemBuilder: (context, index, i) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FeaturedProductItem(
-                            index: index,
-                            name: featuredProdNames[index],
-                            imageLocation: featuredProdPics[index],
+                  featuredProdNames.isNotEmpty
+                      ? CarouselSlider.builder(
+                          itemCount: featuredProdNames.length == 1
+                              ? 1
+                              : featuredProdNames.length == 0
+                                  ? 0
+                                  : featuredProdNames.length - 1,
+                          itemBuilder: (context, index, i) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FeaturedProductItem(
+                                  index: index,
+                                  name: featuredProdNames[index],
+                                  imageLocation: featuredProdPics[index],
+                                ),
+                                SizedBox(width: 13),
+                                featuredProdNames.length == 1
+                                    ? SizedBox()
+                                    : FeaturedProductItem(
+                                        index: (index + 1),
+                                        name: featuredProdNames[index + 1],
+                                        imageLocation:
+                                            featuredProdPics[index + 1],
+                                      ),
+                              ],
+                            );
+                          },
+                          options: CarouselOptions(
+                              viewportFraction: 1,
+                              height: 208,
+                              autoPlayInterval: Duration(seconds: 5),
+                              scrollDirection: Axis.horizontal,
+                              autoPlay:
+                                  featuredProdNames.length == 1 ? false : true,
+                              disableCenter:
+                                  featuredProdNames.length == 1 ? false : true),
+                        )
+                      : Center(
+                          child: Text(
+                            'No featured Products',
+                            style: TextStyle(color: green),
                           ),
-                          SizedBox(width: 13),
-                          FeaturedProductItem(
-                            index: (index + 1),
-                            name: featuredProdNames[index + 1],
-                            imageLocation: featuredProdPics[index + 1],
-                          ),
-                        ],
-                      );
-                    },
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      height: 208,
-                      autoPlayInterval: Duration(seconds: 5),
-                      scrollDirection: Axis.horizontal,
-                      autoPlay: true,
-                    ),
-                  ),
+                        ),
                   SizedBox(height: 50),
                   Text(
                     "New Arrivals",
@@ -219,42 +236,59 @@ class Body extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  CarouselSlider.builder(
-                    itemCount: newArrivalNames.length - 1,
-                    itemBuilder: (context, index, i) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          NewArrivalItem(
-                            index: index,
-                            imageLocation: newArrivalPics[index],
-                            gender: NewArrivalGender[index],
-                            name: newArrivalNames[index],
-                            price: NewArrivalPrice[index],
+                  newArrivalNames.isNotEmpty
+                      ? CarouselSlider.builder(
+                          itemCount: newArrivalNames.length == 1
+                              ? 1
+                              : newArrivalNames.length == 0
+                                  ? 0
+                                  : newArrivalNames.length - 1,
+                          itemBuilder: (context, index, i) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                NewArrivalItem(
+                                  index: index,
+                                  imageLocation: newArrivalPics[index],
+                                  gender: NewArrivalGender[index],
+                                  name: newArrivalNames[index],
+                                  price: NewArrivalPrice[index],
+                                ),
+                                SizedBox(
+                                  width: 13,
+                                ),
+                                newArrivalNames.length == 1
+                                    ? SizedBox()
+                                    : NewArrivalItem(
+                                        index: (index + 1),
+                                        imageLocation:
+                                            newArrivalPics[index + 1],
+                                        gender: NewArrivalGender[index + 1],
+                                        name: newArrivalNames[index + 1],
+                                        price: NewArrivalPrice[index + 1],
+                                      )
+                              ],
+                            );
+                          },
+                          options: CarouselOptions(
+                            viewportFraction: 1,
+                            height: 300,
+                            autoPlay:
+                                newArrivalNames.length == 1 ? false : true,
+                            disableCenter:
+                                newArrivalNames.length == 1 ? false : true,
+                            autoPlayInterval: Duration(
+                              seconds: 5,
+                            ),
+                            scrollDirection: Axis.horizontal,
                           ),
-                          SizedBox(
-                            width: 13,
+                        )
+                      : Center(
+                          child: Text(
+                            'No new arrivals',
+                            style: TextStyle(color: green),
                           ),
-                          NewArrivalItem(
-                            index: (index + 1),
-                            imageLocation: newArrivalPics[index + 1],
-                            gender: NewArrivalGender[index + 1],
-                            name: newArrivalNames[index + 1],
-                            price: NewArrivalPrice[index + 1],
-                          )
-                        ],
-                      );
-                    },
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      height: 300,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(
-                        seconds: 5,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
+                        ),
                   SizedBox(
                     height: 30,
                   )
