@@ -79,7 +79,38 @@ class Body extends StatelessWidget {
                                 isItemFavourite: allProducts[index].favourite,
                                 index: index,
                                 title: allProducts[index].title,
-                                image: allProducts[index].image[0],
+                                image: allProducts[index].image,
+                                price: allProducts[index].price,
+                              )
+                            : null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 6.0),
+                      child: Text(
+                        'Pets',
+                        style: TextStyle(
+                          color: blue,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    GridView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: allProducts.length,
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
+                      itemBuilder: (context, index) {
+                        return allProducts[index].category == 'Pets'
+                            ? PetClothingItem(
+                                isItemFavourite: allProducts[index].favourite,
+                                index: index,
+                                title: allProducts[index].title,
+                                image: allProducts[index].image,
                                 price: allProducts[index].price,
                               )
                             : null;

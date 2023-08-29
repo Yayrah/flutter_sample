@@ -56,6 +56,8 @@ class _BodyState extends State<Body> {
       'Region': regionValue,
       'Experience': experienceValue,
       'Stars Rating': 2,
+    }).catchError((_) {
+      throw 'Error occurred whilst uploading data. \nTry again.';
     });
 
     final docID = document.id;
@@ -186,6 +188,11 @@ class _BodyState extends State<Body> {
                       child: Column(
                         children: [
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(30),
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[a-zA-Z\s]'))
+                            ],
                             controller: _nameController,
                             keyboardType: TextInputType.name,
                             autocorrect: false,
@@ -228,7 +235,7 @@ class _BodyState extends State<Body> {
                                     FilteringTextInputFormatter(
                                         RegExp(r'[0-9]'),
                                         allow: true),
-                                    LengthLimitingTextInputFormatter(3),
+                                    LengthLimitingTextInputFormatter(35),
                                   ],
                                   controller: _ageController,
                                   keyboardType: TextInputType.number,
@@ -318,6 +325,11 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(40),
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[a-zA-Z\s,0-9]'))
+                            ],
                             controller: _locationController,
                             keyboardType: TextInputType.multiline,
                             autocorrect: false,

@@ -5,6 +5,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 
 import '../../../constants.dart';
@@ -184,6 +185,11 @@ class _BodyState extends State<Body> {
                       child: Column(
                         children: [
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(30),
+                              FilteringTextInputFormatter(RegExp(r'[a-zA-Z\s]'),
+                                  allow: true)
+                            ],
                             controller: _nameController,
                             keyboardType: TextInputType.name,
                             autocorrect: false,
@@ -212,6 +218,11 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(3),
+                              FilteringTextInputFormatter(RegExp(r'[0-9]'),
+                                  allow: true)
+                            ],
                             controller: _ageController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
@@ -296,6 +307,12 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(75),
+                              FilteringTextInputFormatter(
+                                  RegExp(r'[a-zA-Z0-9\s,]'),
+                                  allow: true)
+                            ],
                             controller: _locationController,
                             keyboardType: TextInputType.multiline,
                             autocorrect: false,
@@ -324,6 +341,11 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(6),
+                              FilteringTextInputFormatter(RegExp(r'[0-9]'),
+                                  allow: true)
+                            ],
                             controller: _priceController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,

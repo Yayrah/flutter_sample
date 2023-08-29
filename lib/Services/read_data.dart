@@ -231,7 +231,7 @@ class ReadData {
             .where('User ID', isEqualTo: loggedInUserId)
             .get();
 
-        if (querySnapshot.docs.isNotEmpty) {
+        if (faveDocs.docs.isNotEmpty) {
           prodIDs = faveDocs.docs.single.get('Product IDs');
         }
         for (var document in querySnapshot.docs) {
@@ -270,7 +270,7 @@ class ReadData {
             .where('User ID', isEqualTo: loggedInUserId)
             .get();
 
-        if (querySnapshot.docs.isNotEmpty) {
+        if (faveDocs.docs.isNotEmpty) {
           prodIDs = faveDocs.docs.single.get('Product IDs');
         }
 
@@ -298,6 +298,7 @@ class ReadData {
         }
       }
     }
+    print(allProducts);
   }
 
   Future getAllCartItems() async {
@@ -422,7 +423,7 @@ class ReadData {
             title: documentData['Title'],
             price: documentData['Price'],
             size: documentData['Size'],
-            details: documentData['Details'],
+            details: documentData['Detail'],
             description: documentData['Description'],
             category: documentData['Category'],
             favourite: true,

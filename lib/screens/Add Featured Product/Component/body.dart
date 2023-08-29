@@ -5,6 +5,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pet_life_gh/screens/Home2/home_screen2.dart';
 import 'package:pet_life_gh/screens/wrapper.dart';
 
@@ -150,6 +151,12 @@ class _BodyState extends State<Body> {
                     SizedBox(
                       width: 230,
                       child: TextField(
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(75),
+                          FilteringTextInputFormatter(
+                              RegExp(r'[a-zA-Z0-9.,\s]'),
+                              allow: true)
+                        ],
                         controller: descriptionController,
                         keyboardType: TextInputType.name,
                         autocorrect: false,
@@ -506,6 +513,11 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(30),
+                              FilteringTextInputFormatter(RegExp(r'[a-zA-Z\s]'),
+                                  allow: true),
+                            ],
                             controller: titleController,
                             keyboardType: TextInputType.name,
                             autocorrect: false,
@@ -534,6 +546,12 @@ class _BodyState extends State<Body> {
                             height: 20,
                           ),
                           TextField(
+                            inputFormatters: [
+                              FilteringTextInputFormatter(
+                                RegExp(r'[a-zA-Z0-9.\s]'),
+                                allow: true,
+                              )
+                            ],
                             controller: detailController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
@@ -560,12 +578,18 @@ class _BodyState extends State<Body> {
                           ),
                           SizedBox(height: 20),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(6),
+                              FilteringTextInputFormatter(RegExp(r'[0-9]'),
+                                  allow: true)
+                            ],
                             controller: priceController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
                             autofocus: false,
                             cursorColor: blue,
                             decoration: InputDecoration(
+                              // prefix: Text('GHS '),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: grey, width: 1),
@@ -581,17 +605,23 @@ class _BodyState extends State<Body> {
                                 horizontal: 20,
                                 vertical: 20,
                               ),
-                              label: Text("Price"),
+                              label: Text("Price (in GHS)"),
                             ),
                           ),
                           SizedBox(height: 20),
                           TextField(
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                              FilteringTextInputFormatter(RegExp(r'[.0-9]'),
+                                  allow: true)
+                            ],
                             controller: sizeController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
                             autofocus: false,
                             cursorColor: blue,
                             decoration: InputDecoration(
+                              suffix: Text('kg'),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: grey, width: 1),

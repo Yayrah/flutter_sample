@@ -116,7 +116,7 @@ class Body extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Center(
-                            child: Text('Yes, Delete',
+                            child: Text('Yes, Logout',
                                 style: TextStyle(
                                   color: Colors.red,
                                   fontSize: 18,
@@ -176,7 +176,7 @@ class Body extends StatelessWidget {
                         screen: AllProductScreen(),
                       ),
                       DashboardItem(
-                        title: 'Vets',
+                        title: 'Cart',
                         icon: Icons.person,
                         screen: CartPage(),
                       )

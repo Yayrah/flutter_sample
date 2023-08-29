@@ -20,7 +20,7 @@ List tabNames = [
   'Pet Clothing',
   'Pet Food',
   'Pet Accessories',
-  'Pet Watch',
+  'Pets',
 ];
 
 List<String> genderList = ['Male', 'Female'];
@@ -47,7 +47,7 @@ List<String> categoryList = [
   'Pet Food',
   'Pet Clothing',
   'Pet Accessories',
-  'Others',
+  'Pets',
 ];
 String categoryValue = 'Pet Food';
 

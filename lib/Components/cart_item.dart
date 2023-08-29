@@ -47,7 +47,7 @@ class _CartItemState extends State<CartItem> {
           children: [
             Container(
               height: 130,
-              width: 160,
+              width: 152,
               decoration: BoxDecoration(
                   color: white,
                   borderRadius: BorderRadius.circular(9),

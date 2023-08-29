@@ -39,10 +39,11 @@ dependencies:
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.1
   cloud_firestore: ^4.8.0
-  # image_picker: ^1.0.1
-  # dropdown_button2: ^2.0.0
-  # firebase_storage: ^11.2.2
-  # file_picker: ^5.3.3
+  image_picker: ^1.0.1
+  dropdown_button2: ^2.0.0
+  firebase_storage: ^11.2.2
+  file_picker: ^5.3.3
+  flutter_slidable: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -21,8 +21,15 @@ class _SingleVetScreenPageState extends State<SingleVetScreenPage> {
         appBar: AppBar(
           backgroundColor: white,
           elevation: 0,
+          title: Text(
+            'Veterinary Details',
+            style: TextStyle(
+              color: blue,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           leading: DefaultBackButton(),
-          actions: [Icon(Icons.person)],
         ),
         body: SingleChildScrollView(
           child: Column(
